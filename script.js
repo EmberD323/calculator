@@ -80,13 +80,18 @@ operatorButtons.forEach((button)=>{
 let equals = document.querySelector(".equals");
 equals.addEventListener("click",()=>{
     if(operator != undefined && firstNumber != undefined && firstNumber != undefined){
-        //make sure numbers are not strings (eg if equals pressed after zero)
+        //makes sure numbers are not strings (eg if equals pressed after zero)
         firstNumber = Number(firstNumber);
         secondNumber = Number(secondNumber);
+        //complete operation
         operate(firstNumber,operator,secondNumber);
         console.log("equals " + displayNumber);
         displayElement.textContent = displayNumber;
     }
+    //reset calculator with answer being new first number
+    firstNumber = displayNumber;
+    secondNumber = undefined;
+    operator = undefined;
 });
 
 //clear button event listener
