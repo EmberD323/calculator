@@ -1,18 +1,18 @@
 function add (a,b){
-    return ((a+b)*10)/10;
+    return ((a*10)+(b*10))/10;
 }
 function subtract (a,b){
-    return ((a-b)*10)/10;
+    return ((a*10)-(b*10))/10;
 }
 function multiply (a,b){
-    return ((a*b)*10)/10;
+    return (((a*10)*(b*10))/100);
 }
 function divide (a,b){
     if(b==0){
         return "Error, can't divide numbers by 0. Clear and start again."
     }
     else{
-        return ((a/b)*10)/10;
+        return ((a*10)/(b*10))/10;
     }
     
 }
