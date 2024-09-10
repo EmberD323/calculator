@@ -52,6 +52,7 @@ numberButtons.forEach((button)=>{
             secondNumber = Number(button.textContent);
             console.log("second number is " + secondNumber);
             displayElement.textContent = secondNumber;
+            displayElement.textContent = firstNumber + " " + operator + " " + secondNumber;
         }
         //if secondNumber defined and operator defined, add clicked number to second number string
         else{
@@ -62,7 +63,7 @@ numberButtons.forEach((button)=>{
                 secondNumber = Number(secondNumber + button.textContent);
             }
             console.log("second number is " + secondNumber);
-            displayElement.textContent = secondNumber
+            displayElement.textContent = firstNumber + " " + operator + " " + secondNumber;
         }
     });
 });
@@ -73,6 +74,7 @@ operatorButtons.forEach((button)=>{
     button.addEventListener("click",()=>{
             operator = button.textContent;
             console.log("operator is " + operator);
+            displayElement.textContent = firstNumber + " " + operator;
     });
 });
 
