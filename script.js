@@ -1,14 +1,14 @@
 function add (a,b){
-    return ((a*10)+(b*10))/10;
+    return ((a+b)*10)/10;
 }
 function subtract (a,b){
-    return ((a*10)-(b*10))/10;;
+    return ((a-b)*10)/10;
 }
 function multiply (a,b){
-    return ((a*10)*(b*10))/10;
+    return ((a*b)*10)/10;
 }
 function divide (a,b){
-    return ((a*10)/(b*10))/10;;
+    return ((a/b)*10)/10;
 }
 
 let firstNumber;
