@@ -21,7 +21,29 @@ function operate (firstNumber,operator,secondNumber){
     if (operator == "*") return multiply(firstNumber,secondNumber); 
     if (operator == "/") return divide(firstNumber,secondNumber); 
 }
-console.log(operate(4,"+",5));
-console.log(operate(4,"-",5));
-console.log(operate(4,"*",5));
-console.log(operate(20,"/",5));
+
+//number button event listener
+let numberButtons = document.querySelectorAll(".number");
+numberButtons.forEach((button)=>{
+    button.addEventListener("click",()=>{
+        if (firstNumber == undefined){
+            firstNumber = button.textContent;
+            console.log("first number is " + firstNumber);
+        }
+        else if(secondNumber == undefined){
+            secondNumber = button.textContent;
+            console.log("second number is " + secondNumber);
+        }
+    });
+});
+
+//operator button event listener
+let operatorButtons = document.querySelectorAll(".operator");
+operatorButtons.forEach((button)=>{
+    button.addEventListener("click",()=>{
+        if (operator == undefined){
+            operator = button.textContent;
+            console.log("operator is " + operator);
+        }
+    });
+});
