@@ -17,11 +17,12 @@ function divide (a,b){
     
 }
 
-let firstNumber;
+
 let secondNumber;
 let operator;
 let displayElement = document.querySelector(".display");
 let displayNumber = displayElement.textContent;
+let firstNumber = displayNumber;
 let equationComplete;
 console.log(displayNumber);
 
@@ -39,7 +40,7 @@ let numberButtons = document.querySelectorAll(".number");
 numberButtons.forEach((button)=>{
     button.addEventListener("click",()=>{
         
-        if (firstNumber == undefined){
+        if (firstNumber == undefined || firstNumber == 0){
             console.log("1")
             firstNumber = Number(button.textContent);
             console.log("first number is " + firstNumber);
@@ -109,10 +110,16 @@ equals.addEventListener("click",equalsFunction);
 
 
 function equalsFunction (){
+    //if secong number undefined equals first number
     if(displayNumber == "Error, can't divide numbers by 0. Clear and start again."){
         displayElement.textContent = displayNumber;
     }
-    if(operator != undefined && firstNumber != undefined && firstNumber != undefined){
+    else if(secondNumber == undefined){//when equals pressed before second number is input
+        displayNumber = firstNumber;
+        displayElement.textContent = displayNumber;
+
+    }
+    else{
         //makes sure numbers are not strings (eg if equals pressed after zero)
         firstNumber = Number(firstNumber);
         secondNumber = Number(secondNumber);
@@ -121,6 +128,7 @@ function equalsFunction (){
         console.log("equals " + displayNumber);
         displayElement.textContent = displayNumber;
     }
+    
     //reset calculator with answer being new first number
     firstNumber = displayNumber;
     secondNumber = undefined;
