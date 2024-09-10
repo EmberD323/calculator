@@ -137,7 +137,7 @@ decimal.addEventListener("click",()=>{
         if(secondNumber == undefined){
             secondNumber = "0" + decimal.textContent
             console.log("second number is " + secondNumber);
-            displayElement.textContent = secondNumber;
+            displayElement.textContent = firstNumber + " " + operator + "" + secondNumber;
 
         }
         else if(secondNumber % 1 != 0){
@@ -145,7 +145,7 @@ decimal.addEventListener("click",()=>{
         else{
             secondNumber =secondNumber + decimal.textContent;
             console.log("second number is " + secondNumber);
-            displayElement.textContent = secondNumber;
+            displayElement.textContent = firstNumber + " " + operator + "" + secondNumber;
         }
     }
 });
