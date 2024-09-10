@@ -12,7 +12,7 @@ function divide (a,b){
         return "Error, can't divide numbers by 0. Clear and start again."
     }
     else{
-        return ((a*10)/(b*10))/10;
+        return (a*10)/(b*10);
     }
     
 }
@@ -93,16 +93,22 @@ numberButtons.forEach((button)=>{
 let operatorButtons = document.querySelectorAll(".operator");
 operatorButtons.forEach((button)=>{
     button.addEventListener("click",()=>{
-            operator = button.textContent;
-            console.log("operator is " + operator);
-            displayElement.textContent = firstNumber + " " + operator;
+        if(secondNumber !== undefined){ //if this is a sequence, complete first equation and then continue
+            equalsFunction();
+        }
+        operator = button.textContent;
+        console.log("operator is " + operator);
+        displayElement.textContent = firstNumber + " " + operator;
     });
 });
 
 //equals button event listener
 let equals = document.querySelector(".equals");
-equals.addEventListener("click",()=>{
-    
+equals.addEventListener("click",equalsFunction);
+
+
+
+function equalsFunction (){
     if(displayNumber == "Error, can't divide numbers by 0. Clear and start again."){
         displayElement.textContent = displayNumber;
     }
@@ -121,7 +127,7 @@ equals.addEventListener("click",()=>{
     operator = undefined;
     equationComplete = displayNumber;
     
-});
+}
 
 //clear button event listener
 let clear = document.querySelector("#clear");
@@ -155,7 +161,7 @@ decimal.addEventListener("click",()=>{
         if(secondNumber == undefined){
             secondNumber = "0" + decimal.textContent
             console.log("second number is " + secondNumber);
-            displayElement.textContent = firstNumber + " " + operator + "" + secondNumber;
+            displayElement.textContent = firstNumber + " " + operator + " " + secondNumber;
 
         }
         else if(secondNumber % 1 != 0){
@@ -163,7 +169,7 @@ decimal.addEventListener("click",()=>{
         else{
             secondNumber =secondNumber + decimal.textContent;
             console.log("second number is " + secondNumber);
-            displayElement.textContent = firstNumber + " " + operator + "" + secondNumber;
+            displayElement.textContent = firstNumber + " " + operator + " " + secondNumber;
         }
     }
 });
