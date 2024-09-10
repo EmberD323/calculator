@@ -22,6 +22,7 @@ let secondNumber;
 let operator;
 let displayElement = document.querySelector(".display");
 let displayNumber = displayElement.textContent;
+let equationComplete;
 console.log(displayNumber);
 
 function operate (firstNumber,operator,secondNumber){
@@ -37,24 +38,35 @@ function operate (firstNumber,operator,secondNumber){
 let numberButtons = document.querySelectorAll(".number");
 numberButtons.forEach((button)=>{
     button.addEventListener("click",()=>{
+        
         if (firstNumber == undefined){
+            console.log("1")
             firstNumber = Number(button.textContent);
             console.log("first number is " + firstNumber);
             displayElement.textContent = firstNumber;
         }
+        else if(displayElement.textContent == equationComplete){//if just completed an equals but not continuing with that number
+            console.log("2")
+            firstNumber = Number(button.textContent);
+            console.log("first number is " + firstNumber);
+            displayElement.textContent = firstNumber; 
+        }
         //if firstNumber defined but operator isnt, add clicked number to first number string
         else if(firstNumber !== undefined && operator == undefined){
+            console.log("3")
             if(button.textContent == "0"){//when number is zero dont convert to num
+                console.log("3.1")
                 firstNumber = firstNumber + button.textContent;
             }
             else{
+                console.log("3.2")
                 firstNumber = Number(firstNumber + button.textContent);
             }
             console.log("first number is " + firstNumber);
             displayElement.textContent = firstNumber;
-            
         }
         else if(secondNumber == undefined){
+            console.log("4")
             secondNumber = Number(button.textContent);
             console.log("second number is " + secondNumber);
             displayElement.textContent = secondNumber;
@@ -62,10 +74,13 @@ numberButtons.forEach((button)=>{
         }
         //if secondNumber defined and operator defined, add clicked number to second number string
         else{
+            console.log("5")
             if(button.textContent == "0"){//when number is zero dont convert to num
+                console.log("5.1")
                 secondNumber = secondNumber + button.textContent;
             }
             else{
+                console.log("5.2")
                 secondNumber = Number(secondNumber + button.textContent);
             }
             console.log("second number is " + secondNumber);
@@ -87,6 +102,7 @@ operatorButtons.forEach((button)=>{
 //equals button event listener
 let equals = document.querySelector(".equals");
 equals.addEventListener("click",()=>{
+    
     if(displayNumber == "Error, can't divide numbers by 0. Clear and start again."){
         displayElement.textContent = displayNumber;
     }
@@ -103,6 +119,8 @@ equals.addEventListener("click",()=>{
     firstNumber = displayNumber;
     secondNumber = undefined;
     operator = undefined;
+    equationComplete = displayNumber;
+    
 });
 
 //clear button event listener
