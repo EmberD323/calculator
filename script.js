@@ -140,3 +140,45 @@ decimal.addEventListener("click",()=>{
         }
     }
 });
+
+//backspace button event listener
+let back = document.querySelector("#back");
+back.addEventListener("click",()=>{
+    //if operator undefined, take firstNumber
+    if(operator == undefined){
+        firstNumber = String(firstNumber);
+        if(firstNumber == undefined){}
+        else if (firstNumber.length === 1){//if its single digit then undefined and display 0
+            firstNumber = undefined;
+            displayElement.textContent = 0;
+        }
+        else{
+            //take away last character using slice
+            firstNumber = firstNumber.slice(0,firstNumber.length - 1)
+            console.log("first number is " + firstNumber);
+            displayElement.textContent = firstNumber;
+        }
+
+    }
+    //else if operator defined but second number not
+    else if(operator !== undefined && secondNumber == undefined){
+        operator = undefined;
+        displayElement.textContent = firstNumber;
+    }
+    //else secondNumber
+    else{
+        secondNumber = String(secondNumber);
+        if (secondNumber.length === 1){//if its single digit then undefined and display 0
+            secondNumber = undefined;
+            displayElement.textContent = firstNumber + " " + operator;
+        }
+        else{
+            //take away last character using slice
+            secondNumber = secondNumber.slice(0,secondNumber.length - 1)
+            console.log("second number is " + secondNumber);
+            displayElement.textContent = firstNumber + " " + operator + " " + secondNumber;
+        }
+
+    }
+
+});
