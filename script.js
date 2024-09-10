@@ -8,7 +8,13 @@ function multiply (a,b){
     return ((a*b)*10)/10;
 }
 function divide (a,b){
-    return ((a/b)*10)/10;
+    if(b==0){
+        return "Error, can't divide numbers by 0. Clear and start again."
+    }
+    else{
+        return ((a/b)*10)/10;
+    }
+    
 }
 
 let firstNumber;
@@ -81,6 +87,9 @@ operatorButtons.forEach((button)=>{
 //equals button event listener
 let equals = document.querySelector(".equals");
 equals.addEventListener("click",()=>{
+    if(displayNumber == "Error, can't divide numbers by 0. Clear and start again."){
+        displayElement.textContent = displayNumber;
+    }
     if(operator != undefined && firstNumber != undefined && firstNumber != undefined){
         //makes sure numbers are not strings (eg if equals pressed after zero)
         firstNumber = Number(firstNumber);
