@@ -38,23 +38,31 @@ numberButtons.forEach((button)=>{
         }
         //if firstNumber defined but operator isnt, add clicked number to first number string
         else if(firstNumber !== undefined && operator == undefined){
-            firstNumber = Number(firstNumber + button.textContent);
+            if(button.textContent == "0"){//when number is zero dont convert to num
+                firstNumber = firstNumber + button.textContent;
+            }
+            else{
+                firstNumber = Number(firstNumber + button.textContent);
+            }
             console.log("first number is " + firstNumber);
             displayElement.textContent = firstNumber;
             
         }
-        
         else if(secondNumber == undefined){
             secondNumber = Number(button.textContent);
             console.log("second number is " + secondNumber);
             displayElement.textContent = secondNumber;
         }
-        //if firstNumber defined but operator isnt, add clicked number to first number string
+        //if secondNumber defined and operator defined, add clicked number to second number string
         else{
-            secondNumber = Number(secondNumber + button.textContent);
+            if(button.textContent == "0"){//when number is zero dont convert to num
+                secondNumber = secondNumber + button.textContent;
+            }
+            else{
+                secondNumber = Number(secondNumber + button.textContent);
+            }
             console.log("second number is " + secondNumber);
-            displayElement.textContent = secondNumber;
-            
+            displayElement.textContent = secondNumber
         }
     });
 });
@@ -72,10 +80,12 @@ operatorButtons.forEach((button)=>{
 let equals = document.querySelector(".equals");
 equals.addEventListener("click",()=>{
     if(operator != undefined && firstNumber != undefined && firstNumber != undefined){
+        //make sure numbers are not strings (eg if equals pressed after zero)
+        firstNumber = Number(firstNumber);
+        secondNumber = Number(secondNumber);
         operate(firstNumber,operator,secondNumber);
         console.log("equals " + displayNumber);
         displayElement.textContent = displayNumber;
-        
     }
 });
 
