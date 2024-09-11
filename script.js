@@ -107,8 +107,6 @@ operatorButtons.forEach((button)=>{
 let equals = document.querySelector(".equals");
 equals.addEventListener("click",equalsFunction);
 
-
-
 function equalsFunction (){
     //if secong number undefined equals first number
     if(displayNumber == "Error, can't divide numbers by 0. Clear and start again."){
@@ -185,8 +183,12 @@ decimal.addEventListener("click",()=>{
 //backspace button event listener
 let back = document.querySelector("#back");
 back.addEventListener("click",()=>{
+    if(displayElement.textContent == NaN || displayElement.textContent == 0|| displayElement.textContent == undefined
+    ||displayElement.textContent == "Error, can't divide numbers by 0. Clear and start again."){
+    //if display shows just 0, nan, undefined or divide error
+    }
     //if operator undefined, take firstNumber
-    if(operator == undefined){
+    else if(operator == undefined){
         firstNumber = String(firstNumber);
         if(firstNumber == undefined){}
         else if (firstNumber.length === 1){//if its single digit then undefined and display 0
