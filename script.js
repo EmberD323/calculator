@@ -41,33 +41,27 @@ numberButtons.forEach((button)=>{
     button.addEventListener("click",()=>{
         
         if (firstNumber == undefined || firstNumber == 0){
-            console.log("1")
             firstNumber = Number(button.textContent);
             console.log("first number is " + firstNumber);
             displayElement.textContent = firstNumber;
         }
         else if(displayElement.textContent == equationComplete){//if just completed an equals but not continuing with that number
-            console.log("2")
             firstNumber = Number(button.textContent);
             console.log("first number is " + firstNumber);
             displayElement.textContent = firstNumber; 
         }
         //if firstNumber defined but operator isnt, add clicked number to first number string
         else if(firstNumber !== undefined && operator == undefined){
-            console.log("3")
             if(button.textContent == "0"){//when number is zero dont convert to num
-                console.log("3.1")
                 firstNumber = firstNumber + button.textContent;
             }
             else{
-                console.log("3.2")
                 firstNumber = Number(firstNumber + button.textContent);
             }
             console.log("first number is " + firstNumber);
             displayElement.textContent = firstNumber;
         }
         else if(secondNumber == undefined){
-            console.log("4")
             secondNumber = Number(button.textContent);
             console.log("second number is " + secondNumber);
             displayElement.textContent = secondNumber;
@@ -75,13 +69,10 @@ numberButtons.forEach((button)=>{
         }
         //if secondNumber defined and operator defined, add clicked number to second number string
         else{
-            console.log("5")
             if(button.textContent == "0"){//when number is zero dont convert to num
-                console.log("5.1")
                 secondNumber = secondNumber + button.textContent;
             }
             else{
-                console.log("5.2")
                 secondNumber = Number(secondNumber + button.textContent);
             }
             console.log("second number is " + secondNumber);
@@ -148,31 +139,35 @@ clear.addEventListener("click",()=>{
 let decimal = document.querySelector("#decimal");
 decimal.addEventListener("click",()=>{
     if(operator == undefined){//if operator undefined add to firstnumber
-        //if theres already one decimal in the number
-        if(firstNumber == undefined){
+        if(String(firstNumber).includes(".")){//if theres already a decimal
+            displayElement.textContent = firstNumber;
+        }
+        else if(firstNumber == undefined){
+            console.log("first num - operator and number undefined")
             firstNumber = "0" + decimal.textContent
             console.log("first number is " + firstNumber);
             displayElement.textContent = firstNumber;
 
         }
-        else if(firstNumber % 1 != 0){
-        }
         else{
+            console.log("first num - operator undefined and number defined/else")
             firstNumber =firstNumber + decimal.textContent;
             console.log("first number is " + firstNumber);
             displayElement.textContent = firstNumber;
         }
     }
     else{
-        if(secondNumber == undefined){
+        if(String(secondNumber).includes(".")){//if theres already a decimal
+        }
+        else if(secondNumber == undefined){
+            console.log("second num - number undefined")
             secondNumber = "0" + decimal.textContent
             console.log("second number is " + secondNumber);
             displayElement.textContent = firstNumber + " " + operator + " " + secondNumber;
 
         }
-        else if(secondNumber % 1 != 0){
-        }
         else{
+            ("first num - number defined/else")
             secondNumber =secondNumber + decimal.textContent;
             console.log("second number is " + secondNumber);
             displayElement.textContent = firstNumber + " " + operator + " " + secondNumber;
